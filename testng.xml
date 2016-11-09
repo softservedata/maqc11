@@ -13,8 +13,8 @@
 					<include name="testApp" />
 				</methods>
 			</class>
-			<class name="com.softserve.edu.reg.tests.LoginTest"/>
-			<class name="com.softserve.edu.reg.ReportTest"/>
+			<class name="com.softserve.edu.reg.tests.LoginTest" />
+			<!-- <class name="com.softserve.edu.reg.ReportTest"/> -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

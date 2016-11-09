@@ -7,12 +7,12 @@ public final class UserRepository {
 
 	public static User getAdmin() {
 		return User.get()
-				.setFirstname("Адміністратор")
-				.setLastname("Адміністратор")
+				.setFirstname("РђРґРјС–РЅС–СЃС‚СЂР°С‚РѕСЂ")
+				.setLastname("РђРґРјС–РЅС–СЃС‚СЂР°С‚РѕСЂ")
 				.setEmail("admin@admin.com")
 				.setLogin("admin")
 				.setPassword("admin")
-				.setCommunity("Україна")
+				.setCommunity("РЈРєСЂР°С—РЅР°")
 				.build();
 	}
 
@@ -23,7 +23,7 @@ public final class UserRepository {
 				.setEmail("harasym@mail.ua")
 				.setLogin("registrator")
 				.setPassword("registrator")
-				.setCommunity("Україна")
+				.setCommunity("РЈРєСЂР°С—РЅР°")
 				.build(); 
 	}
 
@@ -34,7 +34,18 @@ public final class UserRepository {
 				.setEmail("harasym@mail.ua")
 				.setLogin("registrator1")
 				.setPassword("registrator1")
-				.setCommunity("Україна")
+				.setCommunity("РЈРєСЂР°С—РЅР°")
+				.build();
+	}
+
+	public static User getInvalidUser() {
+		return  User.get()
+				.setFirstname("abcd")
+				.setLastname("abcd")
+				.setEmail("abcd@mail.ua")
+				.setLogin("abcd")
+				.setPassword("abcd")
+				.setCommunity("РЈРєСЂР°С—РЅР°")
 				.build();
 	}
 
