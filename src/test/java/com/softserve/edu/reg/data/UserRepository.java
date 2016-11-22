@@ -10,8 +10,8 @@ public final class UserRepository {
 				.setFirstname("Адміністратор")
 				.setLastname("Адміністратор")
 				.setEmail("admin@admin.com")
-				.setLogin("admin")
-				.setPassword("admin")
+				.setLogin("admin1")
+				.setPassword("admin1")
 				.setCommunity("Україна")
 				.build();
 	}
