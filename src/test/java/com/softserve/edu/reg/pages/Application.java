@@ -17,8 +17,18 @@ public class Application {
 		WebDriver getBrowser(Application application);
 	}
 
+	private static class Firefox4701Temporary implements IBrowser {
+		public WebDriver getBrowser(Application application) {
+			return new FirefoxDriver();
+		}
+	}
+
 	private static class FirefoxTemporary implements IBrowser {
 		public WebDriver getBrowser(Application application) {
+			System.setProperty("webdriver.gecko.driver",
+					application.applicationSources.getDriverPath());
+			//System.out.println("+++ FirefoxTemporary "
+			//		+ application.applicationSources.getDriverPath());
 			return new FirefoxDriver();
 		}
 	}
@@ -42,7 +52,8 @@ public class Application {
 
 	public static enum Browsers {
 		DEFAUL_TEMPORARY("ChromeTemporary", new ChromeTemporary()),
-		FIREFOX_TEMPORARY("FireFoxTemporary", new FirefoxTemporary()),
+		FIREFOX4701_TEMPORARY("FireFox.47.0.1.Temporary", new Firefox4701Temporary()),
+		FIREFOX_TEMPORARY("FireFox.3.0.1.Temporary", new FirefoxTemporary()),
 		CHROME_TEMPORARY("ChromeTemporary", new ChromeTemporary()),
 		HTMLUNIT_TEMPORARY("HtmlUnitTemporary", new HtmlUnitTemporary());
 		//

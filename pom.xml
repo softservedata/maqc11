@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.testng.version>6.9.9</org.testng.version>
-		<org.seleniumhq.selenium.version>2.53.1</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.version>3.0.1</org.seleniumhq.selenium.version>
 		<!-- <org.seleniumhq.selenium.htmlunit-driver>2.20</org.seleniumhq.selenium.htmlunit-driver> -->
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<org.apache.poi.version>3.14</org.apache.poi.version>
@@ -102,8 +102,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
