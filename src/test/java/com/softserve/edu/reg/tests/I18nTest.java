@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.softserve.edu.reg.pages.ATopPage.ChangeLanguageFields;
 import com.softserve.edu.reg.pages.LoginPage;
@@ -24,7 +25,8 @@ public class I18nTest {
 	public void beforeClass() {
 		System.out.println("@BeforeClass");
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+				//"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe"
+				I18nTest.class.getResource("/lib/chromedriver.exe").getPath().substring(1));
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
@@ -50,13 +52,13 @@ public class I18nTest {
 	@DataProvider//(parallel = true)
 	public Object[][] localization() {
 		return new Object[][] {
-			{ ChangeLanguageFields.UKRAINIAN },
-			{ ChangeLanguageFields.RUSSIAN },
+			//{ ChangeLanguageFields.UKRAINIAN },
+			//{ ChangeLanguageFields.RUSSIAN },
 			{ ChangeLanguageFields.ENGLISH }
 			};
 	}
 
-	@Test(dataProvider = "localization")
+	//@Test(dataProvider = "localization")
 	public void checkLocalization(ChangeLanguageFields language) throws Exception {
 		// Precondition
 		// TODO Remove from test
@@ -84,6 +86,43 @@ public class I18nTest {
 		//
 		// Return to previous state
 		//driver.quit();
+	}
+
+	@Test(dataProvider = "localization")
+	public void checkLocalizationSoftAssert(ChangeLanguageFields language) throws Exception {
+		// Precondition
+		// TODO Remove from test
+//		WebDriver driver = new FirefoxDriver();
+//		System.setProperty("webdriver.chrome.driver",
+//				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+//		WebDriver driver = new ChromeDriver();
+//		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//		driver.get("http://registrator.herokuapp.com/login");
+		SoftAssert softAssert = new SoftAssert();
+		//
+		// Steps
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage = loginPage.changeLanguage(language);
+		//
+		// Check
+		System.out.println("Checking LOGIN_LABEL ...");
+		softAssert.assertEquals(loginPage.getLoginLabelText(),
+				LoginPageL10n.LOGIN_LABEL.getLocalization(language));
+		//
+		System.out.println("Checking PASSWORD_LABEL ...");
+		softAssert.assertEquals(loginPage.getPasswordLabelText() + " Add ERROR",
+				LoginPageL10n.PASSWORD_LABEL.getLocalization(language));
+		//
+		System.out.println("Checking SUBMIT_BUTTON ...");
+		softAssert.assertEquals(loginPage.getSignintText(),
+				LoginPageL10n.SUBMIT_BUTTON.getLocalization(language));
+		//
+		// MUST BE DELETE
+		Thread.sleep(5000);
+		//
+		// Return to previous state
+		//driver.quit();
+		softAssert.assertAll();
 	}
 
 }
