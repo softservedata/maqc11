@@ -51,11 +51,11 @@ public abstract class ATopPage {
 		return this.titleMessage;
 	}
 
-	// Functional
-
 	public WebElement getChangeLanguageSelected() {
 		return getChangeLanguage().getFirstSelectedOption();
 	}
+
+	// Functional
 
 	public String getChangeLanguageSelectedText() {
 		return getChangeLanguageSelected().getText().trim();

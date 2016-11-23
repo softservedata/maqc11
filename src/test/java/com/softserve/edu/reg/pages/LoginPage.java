@@ -178,11 +178,11 @@ public class LoginPage extends ATopPage {
     	logger.trace("DONE - private void setLoginData(IUser user)");
 	}
 
-//    public HomePage successUserLogin(IUser user) {
-//        setLoginData(user);
-//        // Return a new page object representing the destination.
-//        return new HomePage();
-//    }
+    public HomePage successUserLogin(IUser user) {
+        setLoginData(user);
+        // Return a new page object representing the destination.
+        return new HomePage(driver);
+    }
 
     public AdminHomePage successAdminLogin(IUser admin) {
     	logger.debug("START - public AdminHomePage successAdminLogin(IUser admin)");

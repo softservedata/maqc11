@@ -29,11 +29,11 @@ public final class UserRepository {
 
 	public static User getNewUser() {
 		return  User.get()
-				.setFirstname("registrator1")
-				.setLastname("registrator1")
-				.setEmail("harasym@mail.ua")
-				.setLogin("registrator1")
-				.setPassword("registrator1")
+				.setFirstname("registrator")
+				.setLastname("registrator")
+				.setEmail("registrator@mail.ua")
+				.setLogin("registrator10")
+				.setPassword("registrator10")
 				.setCommunity("Україна")
 				.build();
 	}
