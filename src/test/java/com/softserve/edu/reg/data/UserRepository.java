@@ -1,11 +1,13 @@
 package com.softserve.edu.reg.data;
 
+import java.util.List;
+
 public final class UserRepository {
 
 	private UserRepository() {
 	}
 
-	public static User getAdmin() {
+	public static IUser getAdmin() {
 		return User.get()
 				.setFirstname("Адміністратор")
 				.setLastname("Адміністратор")
@@ -16,7 +18,7 @@ public final class UserRepository {
 				.build();
 	}
 
-	public static User getRegistrator() {
+	public static IUser getRegistrator() {
 		return User.get()
 				.setFirstname("registrator")
 				.setLastname("registrator")
@@ -27,18 +29,18 @@ public final class UserRepository {
 				.build(); 
 	}
 
-	public static User getNewUser() {
+	public static IUser getNewUser() {
 		return  User.get()
 				.setFirstname("registrator")
 				.setLastname("registrator")
 				.setEmail("registrator@mail.ua")
-				.setLogin("registrator10")
+				.setLogin("registrator11")
 				.setPassword("registrator10")
 				.setCommunity("Україна")
 				.build();
 	}
 
-	public static User getInvalidUser() {
+	public static IUser getInvalidUser() {
 		return  User.get()
 				.setFirstname("abcd")
 				.setLastname("abcd")
@@ -47,6 +49,14 @@ public final class UserRepository {
 				.setPassword("abcd")
 				.setCommunity("Україна")
 				.build();
+	}
+
+	public static List<IUser> getNewUsersFromCsvFile() {
+		return new UserUtils().getAllUsers();
+	}
+
+	public static List<IUser> getNewUsersFromExcelFile() {
+		return new UserUtils("/newUsers.xlsx", new ExcelUtils()).getAllUsers();
 	}
 
 	// public static User getFromDB() {

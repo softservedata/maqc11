@@ -25,7 +25,7 @@ interface ICommunity {
 }
 
 interface IBuild {
-	User build();
+	IUser build();
 }
 
 public class User implements IFirstname, ILastname, IEmail,
@@ -107,4 +107,14 @@ public class User implements IFirstname, ILastname, IEmail,
 		return community;
 	}
 
+	@Override
+	public String toString() {
+		return "firstname= "+firstname
+				+" lastname= "+lastname
+				+" email= "+email
+				+" login= "+login+
+				" password= "+password+
+				" community= "+community;
+	}
+	
 }

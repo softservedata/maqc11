@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.softserve.edu.reg.apps.ApplicationSources;
 import com.softserve.edu.reg.apps.ApplicationSourcesRepository;
 import com.softserve.edu.reg.data.IUser;
+import com.softserve.edu.reg.data.ListUtils;
 import com.softserve.edu.reg.data.UserRepository;
 import com.softserve.edu.reg.pages.AdminHomePage;
 import com.softserve.edu.reg.pages.Application;
@@ -31,19 +32,24 @@ public class CoownerTest {
 		Thread.sleep(2000);
 	}
 
-	@DataProvider //(parallel = true)
+	@DataProvider // (parallel = true)
 	public Object[][] createNewCoowner() {
-		return new Object[][] {
-			//{ ApplicationSourcesRepository.getChromeHeroku(),
-			//	UserRepository.getAdmin(), UserRepository.getNewUser() },
-			{ ApplicationSourcesRepository.getFirefoxHeroku(),
-				UserRepository.getAdmin(), UserRepository.getNewUser() }
-		};
+		//return new Object[][] {
+				// { ApplicationSourcesRepository.getChromeHeroku(),
+				// UserRepository.getAdmin(), UserRepository.getNewUser() },
+				// { ApplicationSourcesRepository.getFirefoxHeroku(),
+				// UserRepository.getAdmin(), UserRepository.getNewUser() }
+				// };
+		return ListUtils.get()
+				.toMultiArrayNumber(ApplicationSourcesRepository.getFirefoxHeroku(),
+						UserRepository.getAdmin(),
+						UserRepository.getNewUsersFromExcelFile());
 	}
 
-	//@Test(dataProvider = "createNewCoowner")
+	@Test(dataProvider = "createNewCoowner")
 	public void checkCreateNewCoowner(ApplicationSources applicationSources,
 			IUser admin, IUser coowner) throws Exception {
+		//System.out.println("+++++ " + coowner); 
 		// Precondition
 		//LoginPage loginPage = Application.get(applicationSources).load();
 		AdminHomePage adminHomePage = Application.get(applicationSources).load()
@@ -77,7 +83,7 @@ public class CoownerTest {
 		};
 	}
 
-	@Test(dataProvider = "coownerLogin")
+	//@Test(dataProvider = "coownerLogin")
 	public void checkCoownerLogin(ApplicationSources applicationSources,
 			IUser coowner) throws Exception {
 		// Precondition
