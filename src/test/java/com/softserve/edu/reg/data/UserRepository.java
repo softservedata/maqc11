@@ -59,9 +59,8 @@ public final class UserRepository {
 		return new UserUtils("/newUsers.xlsx", new ExcelUtils()).getAllUsers();
 	}
 
-	// public static User getFromDB() {
-	// MyDBManager dbm = new MyDBManager();
-	// return dbm.getUser();
-	// }
+	public static List<IUser> getNewUsersFromDB() {
+		return new UserUtils("/", new DBUtils()).getAllUsers();
+	}
 
 }

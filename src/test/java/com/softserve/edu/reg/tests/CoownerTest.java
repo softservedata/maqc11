@@ -40,10 +40,18 @@ public class CoownerTest {
 				// { ApplicationSourcesRepository.getFirefoxHeroku(),
 				// UserRepository.getAdmin(), UserRepository.getNewUser() }
 				// };
+//		return ListUtils.get()
+//				.toMultiArrayNumber(ApplicationSourcesRepository.getFirefoxHeroku(),
+//						UserRepository.getAdmin(),
+//						UserRepository.getNewUsersFromExcelFile());
+//		return ListUtils.get()
+//				.toMultiArrayNumber(ApplicationSourcesRepository.getFirefox4701Heroku(),
+//						UserRepository.getAdmin(),
+//						UserRepository.getNewUsersFromDB());
 		return ListUtils.get()
-				.toMultiArrayNumber(ApplicationSourcesRepository.getFirefoxHeroku(),
+				.toMultiArrayNumber(ApplicationSourcesRepository.getChromeHeroku(),
 						UserRepository.getAdmin(),
-						UserRepository.getNewUsersFromExcelFile());
+						UserRepository.getNewUsersFromDB());
 	}
 
 	@Test(dataProvider = "createNewCoowner")
